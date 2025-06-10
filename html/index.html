@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="dist/output.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(-45deg, #3b82f6, #9333ea, #06b6d4, #f59e0b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animated-border-card,
+    .nav-link,
+    .footer-link {
+      position: relative;
+      border-radius: 0.5rem;
+    }
+
+    .animated-border-card:hover::before,
+    .animated-border-card.is-active::before,
+    .footer-link:hover::before,
+    .footer-link.is-active::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6, #9333ea, #06b6d4);
+      background-size: 200% 200%;
+      animation: pulseGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(8px);
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        background-position: 100% 50%;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+
+      100% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    .animated-border-card:hover .card-content,
+    .animated-border-card.is-active .card-content {
+      transform: scale(1.05);
+    }
+
+    .animated-profile {
+      position: relative;
+      border-radius: 9999px;
+    }
+
+    .animated-profile:hover::before,
+    .animated-profile.is-active::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+      background-size: 200% 200%;
+      animation: rgbPulseGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(8px);
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    @keyframes rgbPulseGlow {
+      0% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        background-position: 100% 50%;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+
+      100% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    .animated-profile:hover .profile-content,
+    .animated-profile.is-active .profile-content {
+      transform: scale(1.05);
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active,
+    .footer-link:hover,
+    .footer-link.is-active {
+      transform: scale(1.1);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after,
+    .footer-link:hover::after,
+    .footer-link.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6, #9333ea, #06b6d4);
+      background-size: 200% 200%;
+      animation: pulseGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body class="text-gray-900 dark:text-white transition duration-300">
+  <header
+    class="p-4 flex justify-between items-center bg-gray-100/80 dark:bg-gray-800/80 shadow backdrop-blur-sm sticky top-0 z-10">
+    <h1 class="text-2xl font-bold text-shadow-lg">My Portfolio</h1>
+    <nav class="space-x-4">
+      <a href="./index.html" class="nav-link hover:underline font-bold">Home</a>
+      <a href="./projects.html" class="nav-link hover:underline">Projects</a>
+      <a href="./contact.html" class="nav-link hover:underline">Contact</a>
+    </nav>
+    <button id="darkModeToggle" onclick="toggleDarkMode()"
+      class="ml-4 px-3 py-1 bg-gray-300 dark:bg-gray-700 rounded w-24 text-center">
+    </button>
+  </header>
+
+  <main class="p-8 max-w-6xl mx-auto">
+    <section class="text-center mb-12" data-aos="zoom-in">
+      <div class="animated-profile mx-auto w-fit">
+        <img src="../assets/IMG_1085.JPG" alt="Profile Picture"
+          class="profile-content w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-blue-600 dark:border-blue-400 mb-4 object-cover transition-transform duration-300">
+      </div>
+      <h2 class="text-4xl font-bold mb-2 text-shadow-lg text-white">Hi, I'm [ RAKSMEY ]</h2>
+      <p class="text-lg text-gray-200 dark:text-gray-300"> | HTML • CSS • JS • React • PHP • Java • AWS | </p>
+      <a href="https://github.com/"
+        class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded shadow drop-shadow-blue-500/50 hover:bg-blue-700 transition">View
+        My Work</a>
+    </section>
+
+    <section data-aos="fade-up">
+      <h3 class="text-3xl font-semibold mb-6 text-center">Featured Projects</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+  <!-- Project 1 -->
+  <div class="animated-border-card" data-aos="fade-up">
+    <div
+      class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg transition-transform duration-300 h-full flex flex-col">
+      <img src="../assets/php.png" alt="Project 1" class="rounded-lg mb-4 object-cover h-48 w-full">
+      <h4 class="text-2xl font-bold mb-2">Inventory Management System</h4>
+      <div class="flex flex-wrap gap-2 mb-3 text-sm">
+        <span class="bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded">PHP</span>
+        <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100 px-2 py-0.5 rounded">MySQL</span>
+        <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100 px-2 py-0.5 rounded">Bootstrap</span>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-1">
+        A full-featured inventory and sales tracking system built for small businesses, supporting role-based access, report exports, and product analytics.
+      </p>
+      <a href="https://github.com/yourprofile/project1"
+        class="mt-auto inline-block text-blue-600 dark:text-blue-400 hover:underline font-semibold">🔗 View Project</a>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="animated-border-card" data-aos="fade-up" data-aos-delay="100">
+    <div
+      class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg transition-transform duration-300 h-full flex flex-col">
+      <img src="../assets/projectManage.png" alt="Project 2" class="rounded-lg mb-4 object-cover h-48 w-full">
+      <h4 class="text-2xl font-bold mb-2">Project Management Dashboard</h4>
+      <div class="flex flex-wrap gap-2 mb-3 text-sm">
+        <span class="bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded">React</span>
+        <span class="bg-purple-100 text-purple-800 dark:bg-purple-700 dark:text-purple-100 px-2 py-0.5 rounded">Tailwind</span>
+        <span class="bg-red-100 text-red-800 dark:bg-red-700 dark:text-red-100 px-2 py-0.5 rounded">Firebase</span>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-1">
+        A Kanban-style project dashboard where users can create, assign, and manage tasks in real time, with dark mode and user authentication.
+      </p>
+      <a href="https://github.com/yourprofile/project2"
+        class="mt-auto inline-block text-blue-600 dark:text-blue-400 hover:underline font-semibold">🔗 View Project</a>
+    </div>
+  </div>
+</div>
+
+    </section>
+  </main>
+
+  <footer class="p-8 bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm mt-12" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">Contact Me</h3>
+        <p class="text-sm">Email: <a href="mailto:your.email@example.com"
+            class="hover:underline">lonhraksmey828282@gmail.com</a></p>
+        <p class="text-sm">Phone: <a href="tel:+1234567890" class="hover:underline">(+855) 963246022 </a></p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+        <ul class="space-y-2">
+          <li><a href="https://www.facebook.com/share/16VdM4s35x/" class="footer-link hover:underline">Facebok</a></li>
+          <li><a href="https://linkedin.com/in/yourprofile" class="footer-link hover:underline">LinkedIn</a></li>
+          <li><a href="https://github.com/yourprofile" class="footer-link hover:underline">GitHub</a></li>
+          <li><a href="https://x.com/yourprofile" class="footer-link hover:underline">X</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-right">
+        <p class="text-sm">© 2025 StupidSmey. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+    function updateButtonIcon() {
+      if (htmlEl.classList.contains('dark')) {
+        darkModeToggle.innerHTML = '☀️ Light';
+      } else {
+        darkModeToggle.innerHTML = '🌙 Dark';
+      }
+    }
+    function toggleDarkMode() {
+      htmlEl.classList.toggle('dark');
+      updateButtonIcon();
+    }
+    document.addEventListener('DOMContentLoaded', updateButtonIcon);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.animated-border-card');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const footerLinks = document.querySelectorAll('.footer-link');
+      const profile = document.querySelector('.animated-profile');
+
+      const removeActiveCardState = () => cards.forEach(c => c.classList.remove('is-active'));
+      const removeActiveNavState = () => navLinks.forEach(link => link.classList.remove('is-active'));
+      const removeActiveFooterState = () => footerLinks.forEach(link => link.classList.remove('is-active'));
+      const removeActiveProfileState = () => profile.classList.remove('is-active');
+
+      cards.forEach(card => {
+        card.addEventListener('touchstart', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const wasActive = card.classList.contains('is-active');
+          removeActiveCardState();
+          if (!wasActive) card.classList.add('is-active');
+        });
+        card.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const wasActive = card.classList.contains('is-active');
+          removeActiveCardState();
+          if (!wasActive) card.classList.add('is-active');
+        });
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('touchstart', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const wasActive = link.classList.contains('is-active');
+          removeActiveNavState();
+          if (!wasActive) link.classList.add('is-active');
+        });
+        link.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const wasActive = link.classList.contains('is-active');
+          removeActiveNavState();
+          if (!wasActive) link.classList.add('is-active');
+        });
+      });
+
+      footerLinks.forEach(link => {
+        link.addEventListener('touchstart', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const wasActive = link.classList.contains('is-active');
+          removeActiveFooterState();
+          if (!wasActive) link.classList.add('is-active');
+        });
+        link.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const wasActive = link.classList.contains('is-active');
+          removeActiveFooterState();
+          if (!wasActive) link.classList.add('is-active');
+        });
+      });
+
+      profile.addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const wasActive = profile.classList.contains('is-active');
+        removeActiveProfileState();
+        if (!wasActive) profile.classList.add('is-active');
+      });
+      profile.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const wasActive = profile.classList.contains('is-active');
+        removeActiveProfileState();
+        if (!wasActive) profile.classList.add('is-active');
+      });
+
+      document.addEventListener('touchstart', () => {
+        removeActiveCardState();
+        removeActiveNavState();
+        removeActiveFooterState();
+        removeActiveProfileState();
+      });
+      document.addEventListener('click', () => {
+        removeActiveCardState();
+        removeActiveNavState();
+        removeActiveFooterState();
+        removeActiveProfileState();
+      });
+    });
+  </script>
+</body>
+
+</html>

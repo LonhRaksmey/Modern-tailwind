@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* @theme {
+  --color-primary: #1E40AF;
+  --color-secondary: #3B82F6;
+  --color-accent: #F59E0B;
+} */
+
+/* Optional: Override for dark mode based on .dark or data-theme */
+/* .dark {
+  @theme {
+    --color-primary: #3B82F6;
+    --color-secondary: #1E40AF;
+    --color-accent: #FBBF24;
+  }
+} */

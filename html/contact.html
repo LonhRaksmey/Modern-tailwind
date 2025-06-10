@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <link href="dist/output.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(-45deg, #3b82f6, #9333ea, #06b6d4, #f59e0b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+     /* NEW: Pulsing Glow Animation */
+    .animated-border-card {
+      position: relative;
+      border-radius: 0.5rem;
+    }
+
+    .animated-border-card:hover::before,
+    .animated-border-card.is-active::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+
+      /* Glow spread */
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6, #9333ea, #06b6d4);
+      background-size: 200% 200%;
+      animation: pulseGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(8px);
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        background-position: 100% 50%;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+
+      100% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    .animated-border-card:hover .card-content,
+    .animated-border-card.is-active .card-content {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+
+<body class="text-gray-900 dark:text-white transition duration-300">
+  <header
+    class="p-4 flex justify-between items-center bg-gray-100/80 dark:bg-gray-800/80 shadow backdrop-blur-sm sticky top-0 z-10">
+    <h1 class="text-2xl font-bold">My Portfolio</h1>
+    <nav class="space-x-4">
+      <a href="./index.html" class="hover:underline">Home</a>
+      <a href="./projects.html" class="hover:underline">Projects</a>
+      <a href="./contact.html" class="hover:underline font-bold">Contact</a>
+    </nav>
+    <button id="darkModeToggle" onclick="toggleDarkMode()"
+      class="ml-4 px-3 py-1 bg-gray-300 dark:bg-gray-700 rounded w-24 text-center">
+      
+      <!-- Content will be set by JavaScript -->
+    </button>
+  </header>
+
+  <main class="p-8 max-w-xl mx-auto" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center text-white">Get in Touch</h2>
+
+    <div class="animated-border-card">
+      <form id="contactForm"
+        class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-lg space-y-4 transition-transform duration-300"
+        onsubmit="handleFormSubmit(event)">
+        <input type="text" placeholder="Name" required
+          class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <input type="email" placeholder="Email" required
+          class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <textarea placeholder="Message" rows="4" required
+          class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+        <button type="submit"
+          class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 active:scale-95 transition-transform duration-300 relative flex justify-center items-center">
+          <span id="submitText">Send Message</span>
+          <span id="loadingSpinner" class="hidden absolute right-4">
+            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+            </svg>
+          </span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    // Dark Mode Script
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+    function updateButtonIcon() {
+      if (htmlEl.classList.contains('dark')) {
+        darkModeToggle.innerHTML = '☀️ Light';
+      } else {
+        darkModeToggle.innerHTML = '🌙 Dark';
+      }
+    }
+    function toggleDarkMode() {
+      htmlEl.classList.toggle('dark');
+      updateButtonIcon();
+    }
+    document.addEventListener('DOMContentLoaded', updateButtonIcon);
+
+    // --- Touch/Click to Hover Script for Form ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.animated-border-card');
+      const removeActiveState = () => cards.forEach(c => c.classList.remove('is-active'));
+      cards.forEach(card => {
+        card.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const wasActive = card.classList.contains('is-active');
+          removeActiveState();
+          if (!wasActive) card.classList.add('is-active');
+        });
+      });
+      document.addEventListener('click', removeActiveState);
+    });
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const submitText = document.getElementById('submitText');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      const form = document.getElementById('contactForm');
+
+      submitText.classList.add('hidden');
+      loadingSpinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        submitText.classList.remove('hidden');
+        loadingSpinner.classList.add('hidden');
+        form.reset();
+        alert('Message sent successfully!');
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>

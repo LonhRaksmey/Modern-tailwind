@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects</title>
+  <link href="../src/output.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(-45deg, #3b82f6, #9333ea, #06b6d4, #f59e0b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Pulsing Glow Animation for Cards */
+    .animated-border-card {
+      position: relative;
+      border-radius: 0.5rem;
+    }
+
+    .animated-border-card:hover::before,
+    .animated-border-card.is-active::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      /* Glow spread */
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6, #9333ea, #06b6d4);
+      background-size: 200% 200%;
+      animation: pulseGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+      filter: blur(8px);
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        background-position: 100% 50%;
+        transform: scale(1.05);
+        opacity: 1;
+      }
+
+      100% {
+        background-position: 0% 50%;
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    /* Subtle scaling effect for card content on hover/touch */
+    .animated-border-card:hover .card-content,
+    .animated-border-card.is-active .card-content {
+      transform: scale(1.05);
+    }
+
+    /* NEW: Navbar Link Hover and Touch Effects */
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      transform: scale(1.1);
+      /* Slight scale-up for hover/touch */
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6, #9333ea, #06b6d4);
+      background-size: 200% 200%;
+      animation: pulseGlow 3s ease-in-out infinite;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body class="text-gray-900 dark:text-white transition duration-300">
+  <header
+    class="p-4 flex justify-between items-center bg-gray-100/80 dark:bg-gray-800/80 shadow backdrop-blur-sm sticky top-0 z-10">
+    <h1 class="text-2xl font-bold">My Portfolio</h1>
+    <nav class="space-x-4">
+      <a href="./index.html" class="nav-link hover:underline">Home</a>
+      <a href="./projects.html" class="nav-link hover:underline font-bold">Projects</a>
+      <a href="./contact.html" class="nav-link hover:underline">Contact</a>
+    </nav>
+    <button id="darkModeToggle" onclick="toggleDarkMode()"
+      class="ml-4 px-3 py-1 bg-gray-300 dark:bg-gray-700 rounded w-24 text-center">
+    </button>
+  </header>
+
+  <main class="p-8 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center text-white" data-aos="zoom-in">All Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <!-- Card 1: Portfolio Website -->
+      <div class="animated-border-card" data-aos="fade-up">
+        <div
+          class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-[1.03] h-full flex flex-col">
+          <img src="../assets/Cover.png" alt="Portfolio Website"
+            class="rounded-xl mb-4 shadow-lg border border-white/20 dark:border-white/10">
+          <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">Responsive Portfolio Website</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-1">
+            A personal portfolio site showcasing projects and skills with a clean design, scroll animations, and dark
+            mode. Built using HTML, TailwindCSS, and JavaScript.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-100">HTML</span>
+            <span class="badge bg-cyan-100 text-cyan-800 dark:bg-cyan-800 dark:text-cyan-100">TailwindCSS</span>
+            <span class="badge bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100">JavaScript</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline mt-auto">View
+            Project →</a>
+        </div>
+      </div>
+
+
+      <!-- Card 2: Product Landing Page -->
+      <div class="animated-border-card" data-aos="fade-up" data-aos-delay="100">
+        <div
+          class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-[1.03] h-full flex flex-col">
+          <img src="../assets/MacBook Air - 1.jpg" alt="Landing Page"
+            class="rounded-xl mb-4 shadow-lg border border-white/20 dark:border-white/10">
+          <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">Product Landing Page</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-1">
+            A sleek landing page for modern products. Features responsive design, interactive image previews, and smooth
+            transitions for a premium user experience.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge bg-cyan-100 text-cyan-800 dark:bg-cyan-800 dark:text-cyan-100">TailwindCSS</span>
+            <span class="badge bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-100">HTML</span>
+            <span class="badge bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100">JavaScript</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline mt-auto">View
+            Project →</a>
+        </div>
+      </div>
+      <!-- Card 3: Weather App -->
+      <div class="animated-border-card" data-aos="fade-up" data-aos-delay="200">
+        <div
+          class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-[1.03] h-full flex flex-col">
+          <img src="../assets/image.png" alt="Weather App"
+            class="rounded-xl mb-4 shadow-lg border border-white/20 dark:border-white/10">
+          <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">Real-Time Weather App</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-1">
+            A real-time weather application using the OpenWeatherMap API. Includes location-based data, search
+            functionality, and dark/light theme toggle.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-100">JavaScript</span>
+            <span class="badge bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100">REST API</span>
+            <span class="badge bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">HTML/CSS</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline mt-auto">View
+            Project →</a>
+        </div>
+      </div>
+
+
+      <!-- Card 4: AWS Deployment -->
+      <div class="animated-border-card" data-aos="fade-up" data-aos-delay="300">
+        <div
+          class="card-content bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-[1.03] h-full flex flex-col">
+          <img src="../assets/aws2.jpg" alt="AWS Deployment"
+            class="rounded-xl mb-4 shadow-lg border border-white/20 dark:border-white/10">
+          <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white">AWS Cloud Deployment</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-1">
+            Automated cloud deployment using AWS EC2 and S3 with GitHub Actions for CI/CD. Showcases a scalable
+            infrastructure with a responsive frontend.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge bg-orange-100 text-orange-900 dark:bg-orange-800 dark:text-orange-100">AWS</span>
+            <span class="badge bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100">CI/CD</span>
+            <span class="badge bg-gray-200 text-gray-900 dark:bg-gray-600 dark:text-white">GitHub Actions</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline mt-auto">View
+            Project →</a>
+        </div>
+      </div>
+
+
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    // Dark Mode Toggle Script
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+    function updateButtonIcon() {
+      if (htmlEl.classList.contains('dark')) {
+        darkModeToggle.innerHTML = '☀️ Light';
+      } else {
+        darkModeToggle.innerHTML = '🌙 Dark';
+      }
+    }
+    function toggleDarkMode() {
+      htmlEl.classList.toggle('dark');
+      updateButtonIcon();
+    }
+    document.addEventListener('DOMContentLoaded', updateButtonIcon);
+
+    // Enhanced Touch/Click to Hover Script for Cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.animated-border-card');
+      const removeActiveCardState = () => {
+        cards.forEach(c => c.classList.remove('is-active'));
+      };
+
+      cards.forEach(card => {
+        card.addEventListener('touchstart', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const wasActive = card.classList.contains('is-active');
+          removeActiveCardState();
+          if (!wasActive) {
+            card.classList.add('is-active');
+          }
+        });
+
+        card.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const wasActive = card.classList.contains('is-active');
+          removeActiveCardState();
+          if (!wasActive) {
+            card.classList.add('is-active');
+          }
+        });
+      });
+
+      // NEW: Touch/Click to Hover Script for Navbar Links
+      const navLinks = document.querySelectorAll('.nav-link');
+      const removeActiveNavState = () => {
+        navLinks.forEach(link => link.classList.remove('is-active'));
+      };
+
+      navLinks.forEach(link => {
+        link.addEventListener('touchstart', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const wasActive = link.classList.contains('is-active');
+          removeActiveNavState();
+          if (!wasActive) {
+            link.classList.add('is-active');
+          }
+        });
+
+        link.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const wasActive = link.classList.contains('is-active');
+          removeActiveNavState();
+          if (!wasActive) {
+            link.classList.add('is-active');
+          }
+        });
+      });
+
+      // Remove active state for both cards and nav links when tapping/clicking outside
+      document.addEventListener('touchstart', () => {
+        removeActiveCardState();
+        removeActiveNavState();
+      });
+      document.addEventListener('click', () => {
+        removeActiveCardState();
+        removeActiveNavState();
+      });
+    });
+  </script>
+</body>
+
+</html>
